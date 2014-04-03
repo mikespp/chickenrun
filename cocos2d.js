@@ -13,7 +13,8 @@
         //SingleEngineFile:'',
         appFiles:[
             'src/GameLayer.js',
-            'src/chicken.js'     //add your own files in order here
+            'src/Chicken.js',
+            'src/Ken.js'     //add your own files in order here
         ]
     };
 
