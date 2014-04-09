@@ -20,11 +20,18 @@ var GameLayer = cc.LayerColor.extend({
 
     onKeyDown: function( e ) {
         if( e == cc.KEY.shift ){
-            this.chicken.slide();
+            if(this.chicken.status == Chicken.STATUS.GROUND){
+                this.chicken.status = Chicken.STATUS.SLIDE;
+                this.chicken.slide();
+            }
+        }
+        if( e==cc.KEY.space ){
+            this.chicken.jump();
         }
     },
 
     onKeyUp: function() {
+        this.chicken.check_landed();
         this.chicken.still();
     }
 
