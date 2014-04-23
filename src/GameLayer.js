@@ -3,13 +3,18 @@ var GameLayer = cc.LayerColor.extend({
         this._super( new cc.Color4B( 127, 127, 127, 255 ) );
         this.setPosition( new cc.Point( 0, 0 ) );
 
+        this.background = new Background();
+        this.background.setPosition(new cc.Point( 0 , 0 ));
+        this.addChild(this.background,1)
+        this.background.scheduleUpdate();
+
         this.chicken = new Chicken();
-        this.chicken.setPosition(new cc.Point( screenWidth/2 , screenHeight/2 ));
+        this.chicken.setPosition(new cc.Point( screenWidth/2 , screenHeight/5 ));
         this.addChild(this.chicken,1)
         this.chicken.scheduleUpdate();
 
         this.ken = new Ken();
-        this.ken.setPosition(new cc.Point( screenWidth/4 , screenHeight/1.75 ) );
+        this.ken.setPosition(new cc.Point( screenWidth/4 , screenHeight/3.75 ) );
         this.addChild( this.ken,1 );
         this.ken.scheduleUpdate();
 

@@ -3,14 +3,18 @@ var Chicken = cc.Sprite.extend({
 		this._super();
 		this.initWithFile( 'image/chic1.png' );
 		this.vy = 0;
-		this.g = -2.5;
+		this.g = -2;
 		this.status = Chicken.STATUS.GROUND;
 		this.still();
+		this.nJump =0;
 	},
 
 	jump: function(){
-		this.vy = 25;
-		this.status = Chicken.STATUS.JUMP;
+		if( this.nJump < 1 ) {
+			this.vy = 25;
+			this.status = Chicken.STATUS.JUMP;
+			this.nJump++;
+		}
 	},
 
 	slide: function() {
@@ -32,13 +36,16 @@ var Chicken = cc.Sprite.extend({
 	},
 
 	check_landed: function(){
-		if(this.getPositionY() <= screenHeight/2){
-			this.setPositionY(screenHeight/2);
+		if(this.getPositionY() <= screenHeight/5){
+			this.setPositionY(screenHeight/5);
 			this.status = Chicken.STATUS.GROUND;
 		}
 	},
 
 	update: function(){
+		if(this.getPositionY() <= screenHeight/5){
+			this.nJump = 0;
+		}
 		this.updateY();
 	},
 
@@ -55,9 +62,9 @@ var Chicken = cc.Sprite.extend({
 			this.vy += this.g;
 			this.setPositionY( this.getPositionY() + this.vy );
 
-			if(this.getPositionY() <= screenHeight/2){
+			if(this.getPositionY() <= screenHeight/5){
 				this.status = Chicken.STATUS.GROUND;
-				this.setPositionY(screenHeight/2);
+				this.setPositionY(screenHeight/5);
 			}
 		}
 	}
