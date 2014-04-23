@@ -3,15 +3,16 @@ var Chicken = cc.Sprite.extend({
 		this._super();
 		this.initWithFile( 'image/chic1.png' );
 		this.vy = 0;
-		this.g = -2;
+		this.g = -1;
 		this.status = Chicken.STATUS.GROUND;
 		this.still();
 		this.nJump =0;
+		this.ghost = false;
 	},
 
 	jump: function(){
 		if( this.nJump < 1 ) {
-			this.vy = 25;
+			this.vy = 18;
 			this.status = Chicken.STATUS.JUMP;
 			this.nJump++;
 		}
@@ -75,4 +76,5 @@ Chicken.STATUS = {
 	SLIDE : 3,
 	JUMP : 1,
 	FALL : 2
+
 };

@@ -18,9 +18,23 @@ var GameLayer = cc.LayerColor.extend({
         this.addChild( this.ken,1 );
         this.ken.scheduleUpdate();
 
+        this.createPumpkin(1);
+
         this.setKeyboardEnabled(true);
 
+        this.scheduleUpdate();
         return true;
+    },
+
+    createPumpkin: function(x){
+
+        this.scheduleOnce(function(){
+            var pumpkin = new Pumpkin( this );
+            pumpkin.setPosition( new cc.Point( screenWidth + 100 , screenHeight/5 ));
+            this.addChild( pumpkin, 2 );
+            this.createPumpkin(Math.floor(Math.random()*5) + 1);
+        }, x);
+
     },
 
     onKeyDown: function( e ) {
@@ -38,7 +52,7 @@ var GameLayer = cc.LayerColor.extend({
     onKeyUp: function() {
         this.chicken.check_landed();
         this.chicken.still();
-    }
+    },
 
 });
 

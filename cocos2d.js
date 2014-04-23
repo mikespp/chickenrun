@@ -15,6 +15,7 @@
             'src/Background.js',
             'src/GameLayer.js',
             'src/Chicken.js',
+            'src/Pumpkin.js',
             'src/Ken.js'     //add your own files in order here
         ]
     };
