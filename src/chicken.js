@@ -36,7 +36,7 @@ var Chicken = cc.Sprite.extend({
 		this.runAction(this.chicAnimate);
 	},
 
-	check_landed: function(){
+	checkLanded: function(){
 		if(this.getPositionY() <= screenHeight/5){
 			this.setPositionY(screenHeight/5);
 			this.status = Chicken.STATUS.GROUND;

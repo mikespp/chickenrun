@@ -16,7 +16,8 @@
             'src/GameLayer.js',
             'src/Chicken.js',
             'src/Pumpkin.js',
-            'src/Ken.js'     //add your own files in order here
+            'src/Ken.js',
+            'src/Cactus.js'     //add your own files in order here
         ]
     };
 

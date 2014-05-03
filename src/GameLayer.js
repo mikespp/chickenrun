@@ -19,6 +19,7 @@ var GameLayer = cc.LayerColor.extend({
         this.ken.scheduleUpdate();
 
         this.createPumpkin(1);
+        this.createCactus(2);
 
         this.setKeyboardEnabled(true);
 
@@ -36,6 +37,16 @@ var GameLayer = cc.LayerColor.extend({
         }, x);
 
     },
+    createCactus: function(x){
+
+        this.scheduleOnce(function(){
+            var cactus = new Cactus( this );
+            cactus.setPosition( new cc.Point( screenWidth + 100 , screenHeight/4 ));
+            this.addChild( cactus, 2 );
+            this.createCactus(Math.floor(Math.random()*5) + 1);
+        }, x);
+
+    },
 
     onKeyDown: function( e ) {
         if( e == cc.KEY.shift ){
@@ -50,9 +61,23 @@ var GameLayer = cc.LayerColor.extend({
     },
 
     onKeyUp: function() {
-        this.chicken.check_landed();
+        this.chicken.checkLanded();
         this.chicken.still();
     },
+
+    update: function(){
+        if(this.chicken.getPositionX()-20 <= this.ken.getPositionX()){
+            this.over = cc.Sprite.create("image/kfc.jpg");
+            this.over.setPosition( new cc.Point(0, 0));
+            this.over.setAnchorPoint( new cc.Point(0, 0));
+
+            this.addChild( this.over, 200 );
+            this.chicken.ghost = true;
+            this.unscheduleUpdate();
+
+
+        }
+    }
 
 });
 

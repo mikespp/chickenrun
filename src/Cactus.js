@@ -1,10 +1,10 @@
-var Pumpkin = cc.Sprite.extend({
-	ctor: function( gameLayer ) {
+var Cactus = cc.Sprite.extend ( { 
+	ctor: function (gameLayer) {
 		this.gameLayer = gameLayer;
 		this.ken = gameLayer.ken;
 		this.chicken = gameLayer.chicken;
 		this._super();
-		this.initWithFile('image/pumpkin.png');
+		this.initWithFile('image/cactus.png');
 		this.scheduleUpdate();
 	},
 	update: function() {
@@ -53,5 +53,4 @@ var Pumpkin = cc.Sprite.extend({
 
 		return Math.abs( thisX - otherX ) <= 50 && Math.abs( thisY - otherY ) <= 50;
 	}
-
-})
+} )

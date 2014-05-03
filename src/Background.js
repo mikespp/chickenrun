@@ -2,8 +2,8 @@ var Background = cc.Node.extend({
 	ctor: function() { 
 		this._super();
 
-		this.background1 = cc.Sprite.create(' image/background.jpg '); 
-		this.background1.setPosition( 400, 300 ); 
+		this.background1 = cc.Sprite.create(' image/background.jpg ');
+		this.background1.setPosition( 400, 300 );
 		this.addChild( this.background1 );
 
 		this.background2 = cc.Sprite.create(' image/background.jpg '); 
