@@ -18,14 +18,23 @@ var GameLayer = cc.LayerColor.extend({
         this.addChild( this.ken,1 );
         this.ken.scheduleUpdate();
 
+        this.startDate = new Date();
+        this.startTime = this.startDate.getTime();
+        this.createLabel();
+
         this.createPumpkin(1);
         this.createCactus(2);
+
+        this.setTouchEnabled(true); 
+        this.setTouchMode(1);
 
         this.setKeyboardEnabled(true);
 
         this.scheduleUpdate();
+        cc.AudioEngine.getInstance().playMusic('musics/march.mp3', true);
         return true;
     },
+
 
     createPumpkin: function(x){
 
@@ -33,7 +42,7 @@ var GameLayer = cc.LayerColor.extend({
             var pumpkin = new Pumpkin( this );
             pumpkin.setPosition( new cc.Point( screenWidth + 100 , screenHeight/5 ));
             this.addChild( pumpkin, 2 );
-            this.createPumpkin(Math.floor(Math.random()*5) + 1);
+            this.createPumpkin(Math.floor(Math.random()*2) + 1);
         }, x);
 
     },
@@ -65,18 +74,48 @@ var GameLayer = cc.LayerColor.extend({
         this.chicken.still();
     },
 
+    onTouchBegan:function( touch, event ) { 
+        if( this.chicken.status == Chicken.STATUS.DEAD ){
+            var director = cc.Director.getInstance(); 
+            director.replaceScene(cc.TransitionFade.create(1.5, new StartScene())); 
+        }
+    } ,
+
+    createLabel: function() { 
+        this.scoreLabel = cc.LabelTTF.create( this.score, 'Arial', 50 ); 
+        this.scoreLabel.setPosition( cc.p( screenWidth -100, screenHeight -80 ) ); 
+        this.addChild( this.scoreLabel , 4 ); 
+    },
+
+    updateScoreLabel: function() { 
+        var currentDate = new Date(); 
+        var time = ( currentDate.getTime() - this.startTime ) / 1000; 
+        this.score = time.toFixed(1); 
+        this.scoreLabel.setString( (this.score) ); 
+    },
+
     update: function(){
         if(this.chicken.getPositionX()-20 <= this.ken.getPositionX()){
+            // cc.AudioEngine.getInstance().stopMusic();
+            cc.AudioEngine.getInstance().playMusic('effects/end.mp3',true);
             this.over = cc.Sprite.create("image/kfc.jpg");
             this.over.setPosition( new cc.Point(0, 0));
             this.over.setAnchorPoint( new cc.Point(0, 0));
+
+            this.chicken.status = Chicken.STATUS.DEAD;
 
             this.addChild( this.over, 200 );
             this.chicken.ghost = true;
             this.unscheduleUpdate();
 
-
+            this.scoreLabel = cc.LabelTTF.create( this.score, 'Arial', 50 ); 
+            this.scoreLabel.setPosition( cc.p( screenWidth / 1.45, screenHeight / 2 ) ); 
+            this.addChild( this.scoreLabel , 201 ); 
+            
+        } else{
+            this.updateScoreLabel();
         }
+        
     }
 
 });

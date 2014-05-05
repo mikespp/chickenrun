@@ -18,6 +18,7 @@ var Cactus = cc.Sprite.extend ( {
 			this.chicken.ghost = true;
 			this.ken.setPositionX(this.ken.getPositionX()+20);
 			this.white = cc.Sprite.create("image/red.png");
+			cc.AudioEngine.getInstance().playEffect('effects/hit.mp3');
 			this.white.setScale( 100 );
 			this.white.setPosition( new cc.Point(0, 0));
 			this.white.setAnchorPoint( new cc.Point(0, 0));

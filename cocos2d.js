@@ -4,7 +4,7 @@
         COCOS2D_DEBUG: 2, //0 to turn debug off, 1 for basic debug, and 2 for full debug
         box2d: false,
         chipmunk: false,
-        showFPS: true,
+        showFPS: false,
         loadExtension: false,
         frameRate: 60,
         renderMode: 1,       //Choose of RenderMode: 0(default), 1(Canvas only), 2(WebGL only)
@@ -17,7 +17,9 @@
             'src/Chicken.js',
             'src/Pumpkin.js',
             'src/Ken.js',
-            'src/Cactus.js'     //add your own files in order here
+            'src/Cactus.js',
+            'src/resource.js' ,
+            'src/CoverLayer.js'    //add your own files in order here
         ]
     };
 

@@ -75,6 +75,7 @@ Chicken.STATUS = {
 	GROUND : 0,
 	SLIDE : 3,
 	JUMP : 1,
-	FALL : 2
+	FALL : 2,
+	DEAD: 3
 
 };
