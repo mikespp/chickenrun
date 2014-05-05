@@ -24,6 +24,7 @@ var GameLayer = cc.LayerColor.extend({
 
         this.createPumpkin(1);
         this.createCactus(2);
+        this.createWorm(1);
 
         this.setTouchEnabled(true); 
         this.setTouchMode(1);
@@ -52,11 +53,21 @@ var GameLayer = cc.LayerColor.extend({
             var cactus = new Cactus( this );
             cactus.setPosition( new cc.Point( screenWidth + 100 , screenHeight/4 ));
             this.addChild( cactus, 2 );
-            this.createCactus(Math.floor(Math.random()*5) + 1);
+            this.createCactus(Math.floor(Math.random()*10) + 1);
         }, x);
 
     },
+    createWorm: function(x){
+        
+        this.scheduleOnce(function(){
+            console.log("oooo");
+            var worm = new SuperWorm( this );
+            worm.setPosition( new cc.Point( screenWidth + 100 , screenHeight/2 ));
+            this.addChild( worm, 3 );
+            this.createWorm(Math.floor(Math.random()*5) + 10);
+        }, x);
 
+    },
     onKeyDown: function( e ) {
         if( e == cc.KEY.shift ){
             if(this.chicken.status == Chicken.STATUS.GROUND){
@@ -68,6 +79,8 @@ var GameLayer = cc.LayerColor.extend({
             this.chicken.jump();
         }
     },
+
+    
 
     onKeyUp: function() {
         this.chicken.checkLanded();

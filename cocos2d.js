@@ -19,7 +19,8 @@
             'src/Ken.js',
             'src/Cactus.js',
             'src/resource.js' ,
-            'src/CoverLayer.js'    //add your own files in order here
+            'src/CoverLayer.js',
+            'src/SuperWorm.js'    //add your own files in order here
         ]
     };
 

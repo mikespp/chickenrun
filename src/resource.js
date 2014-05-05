@@ -14,6 +14,8 @@ var g_resources = [
 	{src: 'image/red.png'},
 	{src: 'image/white.png'},
 	{src: 'image/cover.jpg'},
+	{src: 'image/superWorm.png'},
+
 
 	//effects
 	{src: 'effects/hit.mp3'},
