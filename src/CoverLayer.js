@@ -18,7 +18,6 @@ var CoverLayer = cc.Layer.extend({
 	// 	cc.AudioEngine.getInstance().playMusic( 'effects/start_background_sound.mp3', true ); 
 	// }, 
 	onTouchBegan:function( touch, event ) { 
-		cc.log("==onplay clicked"); 
 		var director = cc.Director.getInstance(); 
 		director.replaceScene(cc.TransitionFade.create(1.5, new StartScene())); 
 	} 

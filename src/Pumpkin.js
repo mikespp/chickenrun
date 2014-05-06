@@ -19,7 +19,7 @@ var Pumpkin = cc.Sprite.extend({
 			this.chicken.ghost = true;
 
 			this.ken.setPositionX(this.ken.getPositionX()+20);
-			this.white = cc.Sprite.create("image/red.png");
+			this.white = cc.Sprite.create("image/hurt.png");
 			cc.AudioEngine.getInstance().playEffect('effects/hit.mp3');
 			this.white.setScale( 100 );
 			this.white.setPosition( new cc.Point(0, 0));
@@ -28,7 +28,7 @@ var Pumpkin = cc.Sprite.extend({
 			this.gameLayer.addChild( this.white, 200 );
 			this.scheduleOnce(function(){
 				this.gameLayer.removeChild(this.white);
-			},0.1)
+			},0.2)
 			
 			this.scheduleOnce(function(){
 				this.chicken.ghost = false;

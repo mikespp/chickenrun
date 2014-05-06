@@ -19,7 +19,7 @@ var SuperWorm = cc.Sprite.extend({
 			this.chicken.ghost = true;
 
 			this.ken.setPositionX(this.ken.getPositionX()-20);
-			this.white = cc.Sprite.create("image/power.jpg");
+			this.white = cc.Sprite.create("image/chicPow2.png");
 			cc.AudioEngine.getInstance().playEffect('effects/tada.mp3');
 
 			
@@ -29,7 +29,7 @@ var SuperWorm = cc.Sprite.extend({
 			this.gameLayer.addChild( this.white, 200 );
 			this.scheduleOnce(function(){
 				this.gameLayer.removeChild(this.white);
-			},0.3)
+			},0.5)
 			
 			this.scheduleOnce(function(){
 				this.chicken.ghost = false;
