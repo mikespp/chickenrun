@@ -17,6 +17,9 @@ var g_resources = [
 	{src: 'image/superWorm.png'},
 	{src: 'image/chicPow2.png'},
 	{src: 'image/hurt.png'},
+	{src: 'image/brokenPumpkin.png'},
+	{src: 'image/brokenCactus.png'},
+
 
 
 

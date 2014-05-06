@@ -60,7 +60,6 @@ var GameLayer = cc.LayerColor.extend({
     createWorm: function(x){
         
         this.scheduleOnce(function(){
-            console.log("oooo");
             var worm = new SuperWorm( this );
             worm.setPosition( new cc.Point( screenWidth + 100 , screenHeight/2 ));
             this.addChild( worm, 3 );
@@ -96,6 +95,7 @@ var GameLayer = cc.LayerColor.extend({
 
     createLabel: function() { 
         this.scoreLabel = cc.LabelTTF.create( this.score, 'Arial', 50 ); 
+        this.scoreLabel.setColor( new cc.Color3B( 0, 0, 0 ) );
         this.scoreLabel.setPosition( cc.p( screenWidth -100, screenHeight -80 ) ); 
         this.addChild( this.scoreLabel , 4 ); 
     },
@@ -122,6 +122,7 @@ var GameLayer = cc.LayerColor.extend({
             this.unscheduleUpdate();
 
             this.scoreLabel = cc.LabelTTF.create( this.score, 'Arial', 50 ); 
+            this.scoreLabel.setColor( new cc.Color3B( 0, 0, 0 ) );
             this.scoreLabel.setPosition( cc.p( screenWidth / 1.45, screenHeight / 2 ) ); 
             this.addChild( this.scoreLabel , 201 ); 
             

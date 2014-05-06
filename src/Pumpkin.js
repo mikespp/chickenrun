@@ -35,17 +35,15 @@ var Pumpkin = cc.Sprite.extend({
 			},0.5)
 		}
 
+		if( this.hit( this.ken ) ){
+			this.initWithFile('image/brokenPumpkin.png');
+			this.setPositionY(screenHeight/5.5);
+		}
+
+
 		if(this.chicken.getPositionX()-20 <= this.ken.getPositionX()){
-		// 	this.over = cc.Sprite.create("image/kfc.jpg");
-		// 	this.over.setPosition( new cc.Point(0, 0));
-		// 	this.over.setAnchorPoint( new cc.Point(0, 0));
-
-		// 	this.gameLayer.addChild( this.over, 200 );
 			this.chicken.ghost = true;
-		// 	this.unscheduleUpdate();
-
-
-		 }
+		}
 	},
 
 	hit: function( other ) {
