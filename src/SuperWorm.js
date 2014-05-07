@@ -1,4 +1,5 @@
 var SuperWorm = cc.Sprite.extend({
+
 	ctor: function( gameLayer ) {
 		this.gameLayer = gameLayer;
 		this.ken = gameLayer.ken;
@@ -38,15 +39,8 @@ var SuperWorm = cc.Sprite.extend({
 		}
 
 		if(this.chicken.getPositionX()-20 <= this.ken.getPositionX()){
-		// 	this.over = cc.Sprite.create("image/kfc.jpg");
-		// 	this.over.setPosition( new cc.Point(0, 0));
-		// 	this.over.setAnchorPoint( new cc.Point(0, 0));
-
-		// 	this.gameLayer.addChild( this.over, 200 );
+			
 			this.chicken.ghost = true;
-		// 	this.unscheduleUpdate();
-
-
 		 }
 	},
 

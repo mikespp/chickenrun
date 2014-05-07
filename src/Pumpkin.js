@@ -1,4 +1,5 @@
 var Pumpkin = cc.Sprite.extend({
+	
 	ctor: function( gameLayer ) {
 		this.gameLayer = gameLayer;
 		this.ken = gameLayer.ken;

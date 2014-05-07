@@ -3,20 +3,10 @@ var GameLayer = cc.LayerColor.extend({
         this._super( new cc.Color4B( 127, 127, 127, 255 ) );
         this.setPosition( new cc.Point( 0, 0 ) );
 
-        this.background = new Background();
-        this.background.setPosition(new cc.Point( 0 , 0 ));
-        this.addChild(this.background,1)
-        this.background.scheduleUpdate();
+        this.createBackground();
+        this.createChicken();
+        this.createKen();
 
-        this.chicken = new Chicken();
-        this.chicken.setPosition(new cc.Point( screenWidth/2 , screenHeight/5 ));
-        this.addChild(this.chicken,1)
-        this.chicken.scheduleUpdate();
-
-        this.ken = new Ken();
-        this.ken.setPosition(new cc.Point( screenWidth/4 , screenHeight/3.75 ) );
-        this.addChild( this.ken,1 );
-        this.ken.scheduleUpdate();
 
         this.startDate = new Date();
         this.startTime = this.startDate.getTime();
@@ -34,6 +24,27 @@ var GameLayer = cc.LayerColor.extend({
         this.scheduleUpdate();
         cc.AudioEngine.getInstance().playMusic('musics/march.mp3', true);
         return true;
+    },
+
+    createBackground: function(){
+        this.background = new Background();
+        this.background.setPosition(new cc.Point( 0 , 0 ));
+        this.addChild(this.background,1)
+        this.background.scheduleUpdate();
+    },
+
+    createChicken: function(){
+        this.chicken = new Chicken();
+        this.chicken.setPosition(new cc.Point( screenWidth/2 , screenHeight/5 ));
+        this.addChild(this.chicken,1)
+        this.chicken.scheduleUpdate();
+    },
+
+    createKen: function(){
+        this.ken = new Ken();
+        this.ken.setPosition(new cc.Point( screenWidth/4 , screenHeight/3.75 ) );
+        this.addChild( this.ken,1 );
+        this.ken.scheduleUpdate();
     },
 
 
@@ -108,8 +119,9 @@ var GameLayer = cc.LayerColor.extend({
     },
 
     update: function(){
-        if(this.chicken.getPositionX()-20 <= this.ken.getPositionX()){
-            // cc.AudioEngine.getInstance().stopMusic();
+        if(this.chicken.getPositionX()-40 <= this.ken.getPositionX()){
+            this.chicken.ghost = true;
+            cc.AudioEngine.getInstance().playEffect('effects/scream.mp3')
             cc.AudioEngine.getInstance().playMusic('effects/end.mp3',true);
             this.over = cc.Sprite.create("image/kfc.jpg");
             this.over.setPosition( new cc.Point(0, 0));
@@ -117,8 +129,7 @@ var GameLayer = cc.LayerColor.extend({
 
             this.chicken.status = Chicken.STATUS.DEAD;
 
-            this.addChild( this.over, 200 );
-            this.chicken.ghost = true;
+            this.addChild( this.over, 201 );
             this.unscheduleUpdate();
 
             this.scoreLabel = cc.LabelTTF.create( this.score, 'Arial', 50 ); 

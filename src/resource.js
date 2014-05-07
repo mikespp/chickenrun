@@ -27,6 +27,7 @@ var g_resources = [
 	{src: 'effects/hit.mp3'},
 	{src: 'effects/tada.mp3'},
 	{src: 'effects/end.mp3'},
+	{src: 'effects/scream.mp3'},
 
 	//musics
 	{src: 'musics/march.mp3'}

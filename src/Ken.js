@@ -1,4 +1,5 @@
 var Ken = cc.Sprite.extend({
+	
 	ctor: function() {
 		this._super();
 		this.initWithFile( 'image/ken1.png' );
